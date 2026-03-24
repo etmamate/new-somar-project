@@ -3,7 +3,6 @@ package br.com.somar.backend_somar.Models;
 import java.time.LocalDateTime;
 
 import br.com.somar.backend_somar.Enums.CampanhaEnum;
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
