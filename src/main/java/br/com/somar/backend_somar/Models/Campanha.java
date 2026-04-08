@@ -2,6 +2,9 @@ package br.com.somar.backend_somar.Models;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.UUID;
+
 import br.com.somar.backend_somar.Enums.CampanhaEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,7 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +28,7 @@ public class Campanha {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "codong", nullable = false)
     private Ong ong;
 
