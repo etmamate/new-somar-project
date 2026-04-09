@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UsuarioController {
     
     private final UsuarioService usuarioService;
-   
 
     //POST
     @PostMapping("/cadastrar")
@@ -33,7 +32,5 @@ public class UsuarioController {
     public List<Usuario> listarUsuarios () {
         return usuarioService.listarUsuarios();
     }
-    
-
 
 }
