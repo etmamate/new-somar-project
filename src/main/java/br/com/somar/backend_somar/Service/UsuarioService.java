@@ -21,7 +21,7 @@ public class UsuarioService {
     public Usuario salvarUsuario(UsuarioCreateRequestDTO usuarioCreateRequestDTO){
         Usuario usuario = new Usuario();
         usuario.setNome(usuarioCreateRequestDTO.getNome());
-        usuario.setTipo(usuarioCreateRequestDTO.getTipo());
+        usuario.setEmail(usuarioCreateRequestDTO.getEmail());
         usuario.setSenha(usuarioCreateRequestDTO.getSenha());
         usuario.setTipo(usuarioCreateRequestDTO.getTipo());
         return usuarioRepository.save(usuario);

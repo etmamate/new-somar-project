@@ -2,6 +2,7 @@ package br.com.somar.backend_somar.DTO.Requests;
 
 import br.com.somar.backend_somar.Enums.UsuarioEnum;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -23,8 +24,8 @@ public class UsuarioCreateRequestDTO {
     @NotBlank(message = "Senha é obrigatório")
     private String senha;
 
-    @NotBlank(message = "Tipo é obrigatório")
-    @Pattern(regexp = "^(DOADOR|ONG|ADMIN)$", 
-             message = "Tipo deve ser DOADOR, ONG ou ADMIN")
+    @NotNull(message = "Tipo é obrigatório")
+    /*@Pattern(regexp = "^(DOADOR|ONG|ADMIN)$", 
+             message = "Tipo deve ser DOADOR, ONG ou ADMIN")*/
     private UsuarioEnum tipo;
 }
