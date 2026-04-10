@@ -21,6 +21,7 @@ public class CampanhaMapper {
 
     public CampanhaCreateResponseDTO toCampanhaResponseDTO(Campanha campanha){
         return new CampanhaCreateResponseDTO(
+            campanha.getId(),
             campanha.getTitulo(),
             campanha.getDescricao(),
             campanha.getOng(),

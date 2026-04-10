@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
-@RequestMapping(value = "/campanha")
+@RequestMapping(value = "/usuario/")
 @RequiredArgsConstructor
 public class UsuarioController {
     
