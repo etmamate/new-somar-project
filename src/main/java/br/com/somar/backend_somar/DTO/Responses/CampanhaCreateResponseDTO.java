@@ -14,7 +14,7 @@ public class CampanhaCreateResponseDTO {
 	private Long id;
     private String titulo;
     private String descricao;
-    private Ong ong;
+    private Ong codong;
     private float meta;
     private CampanhaEnum status;
 }

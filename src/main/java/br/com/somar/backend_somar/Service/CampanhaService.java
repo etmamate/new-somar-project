@@ -19,7 +19,7 @@ public class CampanhaService {
         Campanha campanha = new Campanha();
         campanha.setTitulo(campanhaCreateRequestDTO.getTitulo());
         campanha.setDescricao(campanhaCreateRequestDTO.getDescricao());
-        campanha.setOng(campanhaCreateRequestDTO.getOng());
+        campanha.setOng(campanhaCreateRequestDTO.getCodong());
         campanha.setMeta(campanhaCreateRequestDTO.getMeta());
         campanha.setStatus(campanhaCreateRequestDTO.getStatus());
         return campanhaRepository.save(campanha);

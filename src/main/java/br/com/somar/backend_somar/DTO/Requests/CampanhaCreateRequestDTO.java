@@ -16,7 +16,7 @@ import lombok.Setter;
 public class CampanhaCreateRequestDTO {
     
     @NotBlank(message = "Id de Ong é obrigatório")
-    private Ong ong;
+    private Ong codong;
 
     @NotBlank(message = "Titulo da campanha é obrigatório")
     private String titulo;
@@ -29,7 +29,5 @@ public class CampanhaCreateRequestDTO {
     
     @NotNull(message = "Tipo é obrigatório")
     private CampanhaEnum status;
-
-//    private LocalDateTime diafinalizado;
 
 }

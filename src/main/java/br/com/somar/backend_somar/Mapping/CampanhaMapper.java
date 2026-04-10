@@ -13,7 +13,7 @@ public class CampanhaMapper {
         Campanha campanha = new Campanha();
         campanha.setTitulo(dto.getTitulo());
         campanha.setDescricao(dto.getDescricao());
-        campanha.setOng(dto.getOng());
+        campanha.setOng(dto.getCodong());
         campanha.setMeta(dto.getMeta());
         campanha.setStatus(dto.getStatus());
         return campanha;
