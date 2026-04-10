@@ -3,7 +3,6 @@ package br.com.somar.backend_somar.DTO.Requests;
 import br.com.somar.backend_somar.Enums.UsuarioEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

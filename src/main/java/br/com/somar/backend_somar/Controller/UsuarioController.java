@@ -16,12 +16,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
-@RequestMapping(value = "/campanha")
+@RequestMapping(value = "/usuario/")
 @RequiredArgsConstructor
 public class UsuarioController {
     
     private final UsuarioService usuarioService;
-   
 
     //POST
     @PostMapping("/cadastrar")
@@ -33,7 +32,5 @@ public class UsuarioController {
     public List<Usuario> listarUsuarios () {
         return usuarioService.listarUsuarios();
     }
-    
-
 
 }
