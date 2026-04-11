@@ -1,6 +1,8 @@
 package br.com.somar.backend_somar.DTO.Responses;
 
 
+import java.time.LocalDateTime;
+
 import br.com.somar.backend_somar.Enums.CampanhaEnum;
 import br.com.somar.backend_somar.Models.Ong;
 import lombok.AllArgsConstructor;
@@ -16,5 +18,7 @@ public class CampanhaCreateResponseDTO {
     private String descricao;
     private Ong codong;
     private float meta;
+    private float valoratual;
+    private LocalDateTime datacriacao;
     private CampanhaEnum status;
 }

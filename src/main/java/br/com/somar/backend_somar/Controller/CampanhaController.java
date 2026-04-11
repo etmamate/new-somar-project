@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping(value = "/campanha")
 @RequiredArgsConstructor
-public class CampanhaControlle {
+public class CampanhaController {
     
     private final CampanhaService campanhaService;
 
