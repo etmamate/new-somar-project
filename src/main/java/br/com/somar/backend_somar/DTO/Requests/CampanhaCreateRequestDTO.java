@@ -1,5 +1,6 @@
 package br.com.somar.backend_somar.DTO.Requests;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import br.com.somar.backend_somar.Enums.CampanhaEnum;
@@ -16,7 +17,7 @@ import lombok.Setter;
 public class CampanhaCreateRequestDTO {
     
     @NotBlank(message = "Id de Ong é obrigatório")
-    private Ong codong;
+    private Long codong;
 
     @NotBlank(message = "Titulo da campanha é obrigatório")
     private String titulo;
@@ -26,6 +27,14 @@ public class CampanhaCreateRequestDTO {
 
     @NotBlank(message = "Meta da campanha é obrigatória")
     private float meta;
+
+    @NotBlank(message = "Valor atual precisa estar preenchido")
+    private float valoratual;
+
+    private LocalDateTime dataCriacao;
+
+    @NotNull(message = "Obrigatório")
+    private LocalDateTime diafinalizado;
     
     @NotNull(message = "Tipo é obrigatório")
     private CampanhaEnum status;

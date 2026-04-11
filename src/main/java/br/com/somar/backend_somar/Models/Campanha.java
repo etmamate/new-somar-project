@@ -40,5 +40,8 @@ public class Campanha {
     @Enumerated(EnumType.STRING)
     private CampanhaEnum status;
 
+    @CreationTimestamp
+    LocalDateTime datacricao;
+    
     LocalDateTime diafinalizado;
 }
