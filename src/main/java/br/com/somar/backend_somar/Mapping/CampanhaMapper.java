@@ -36,7 +36,7 @@ public class CampanhaMapper {
             campanha.getOng(),
             campanha.getMeta(),
             campanha.getValoratual(),
-            campanha.getDatacricao(), 
+            campanha.getDatacriacao(), 
             campanha.getStatus()
         );
     }

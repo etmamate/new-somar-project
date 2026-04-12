@@ -41,7 +41,7 @@ public class Campanha {
     private CampanhaEnum status;
 
     @CreationTimestamp
-    LocalDateTime datacricao;
+    LocalDateTime datacriacao;
     
     LocalDateTime diafinalizado;
 }
