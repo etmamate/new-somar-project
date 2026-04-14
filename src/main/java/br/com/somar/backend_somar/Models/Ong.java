@@ -1,5 +1,9 @@
 package br.com.somar.backend_somar.Models;
 
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,4 +34,7 @@ public class Ong {
     @OneToOne
     @JoinColumn(name = "codusuario", nullable = false)
     private Usuario usuario;
+
+    @CreationTimestamp
+    LocalDateTime datacriacao;
 }
