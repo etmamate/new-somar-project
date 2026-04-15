@@ -10,6 +10,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 @RestController
 @RequestMapping(value = "/campanha")
@@ -23,5 +29,9 @@ public class CampanhaController {
         return campanhaService.salvarCampanha(campanhaCreateRequestDTO);
     }
     
-
+    @GetMapping("/listar-campanhas")
+    public List<Campanha> listarCampanhas() {
+        return campanhaService.listarCampanhas();
+    }
+    
 }

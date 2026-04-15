@@ -10,6 +10,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 @RestController
 @RequestMapping(value = "/ong")
@@ -22,5 +28,11 @@ public class OngController {
     public Ong createOng(@RequestBody OngCreateRequestDTO ongCreateRequestDTO) {
         return ongService.salvarOng(ongCreateRequestDTO);
     }
+
+    @GetMapping("/listar-ongs")
+    public List<Ong> listarOngs() {
+        return ongService.listarOngs();
+    }
+    
     
 }

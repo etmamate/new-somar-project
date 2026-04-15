@@ -1,5 +1,7 @@
 package br.com.somar.backend_somar.Service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import br.com.somar.backend_somar.DTO.Requests.OngCreateRequestDTO;
@@ -29,5 +31,9 @@ public class OngService {
         Usuario usuario = usuarioRepository.findById(ongCreateRequestDTO.getCodusuario()).orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
         ong.setUsuario(usuario);
         return ongRepository.save(ong);
+    }
+
+    public List<Ong> listarOngs(){
+        return ongRepository.findAll();
     }
 }

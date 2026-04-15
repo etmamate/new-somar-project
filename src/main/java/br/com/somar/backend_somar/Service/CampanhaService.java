@@ -1,5 +1,7 @@
 package br.com.somar.backend_somar.Service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import br.com.somar.backend_somar.DTO.Requests.CampanhaCreateRequestDTO;
@@ -30,5 +32,9 @@ public class CampanhaService {
         campanha.setValoratual(campanhaCreateRequestDTO.getValoratual());
         campanha.setStatus(campanhaCreateRequestDTO.getStatus());
         return campanhaRepository.save(campanha);
+    }
+
+    public List<Campanha> listarCampanhas(){
+        return campanhaRepository.findAll();
     }
 }
