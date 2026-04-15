@@ -28,7 +28,7 @@ public class UsuarioController {
         return usuarioService.salvarUsuario(usuarioCreateRequestDTO);
     }   
 
-    @GetMapping("/listar-campanhas")
+    @GetMapping("/listar-usuarios")
     public List<Usuario> listarUsuarios () {
         return usuarioService.listarUsuarios();
     }
