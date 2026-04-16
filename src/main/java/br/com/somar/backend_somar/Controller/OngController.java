@@ -1,6 +1,7 @@
 package br.com.somar.backend_somar.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.somar.backend_somar.DTO.Requests.OngCreateRequestDTO;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -34,5 +37,8 @@ public class OngController {
         return ongService.listarOngs();
     }
     
-    
+    @DeleteMapping("/deletar-ong-{id}")
+    public void deletarOngId(@PathVariable Long id){
+        ongService.deletarOngPorId(id);
+    }
 }
