@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import br.com.somar.backend_somar.DTO.Requests.OngCreateRequestDTO;
+import br.com.somar.backend_somar.Models.Campanha;
 import br.com.somar.backend_somar.Models.Ong;
 import br.com.somar.backend_somar.Models.Usuario;
 import br.com.somar.backend_somar.Repository.OngRepository;
@@ -35,5 +36,11 @@ public class OngService {
 
     public List<Ong> listarOngs(){
         return ongRepository.findAll();
+    }
+
+    public Ong deletarOngPorId(Long id){
+        Ong ong = ongRepository.findById(id).orElseThrow(() -> new RuntimeException("Ong não encontrada"));
+        ongRepository.delete(ong);
+        return ong;
     }
 }
