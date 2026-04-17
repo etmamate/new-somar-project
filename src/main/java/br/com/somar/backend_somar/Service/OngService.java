@@ -1,6 +1,7 @@
 package br.com.somar.backend_somar.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -35,5 +36,9 @@ public class OngService {
 
     public List<Ong> listarOngs(){
         return ongRepository.findAll();
+    }
+
+    public Optional<Ong> buscarOngId(Long id){
+        return ongRepository.findById(id);
     }
 }
