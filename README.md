@@ -126,9 +126,3 @@ O objetivo do Somar é:
 
 Sugestões e melhorias são bem-vindas!  
 Sinta-se à vontade para abrir issues ou pull requests.
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT.
