@@ -1,6 +1,7 @@
 package br.com.somar.backend_somar.Models;
 
 import br.com.somar.backend_somar.Enums.UsuarioEnum;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -30,7 +31,6 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private UsuarioEnum tipo;
 
-    @OneToOne
-    @JoinColumn(name="codusuario")
-    private Usuario usuario;
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Ong ong;
 }
