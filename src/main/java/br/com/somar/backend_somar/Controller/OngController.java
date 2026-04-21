@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,6 +39,11 @@ public class OngController {
     @GetMapping("/buscar-ong-{id}")
     public Optional<Ong> getMethodName(@RequestParam Long id) {
         return ongService.buscarOngId(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletarOng(@RequestParam Long id){  
+        ongService.deletarOng(id);
     }
     
 }
