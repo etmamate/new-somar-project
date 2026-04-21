@@ -35,7 +35,7 @@ public class CampanhaController {
         return campanhaService.listarCampanhas();
     }
     
-    @DeleteMapping("/campanha-{id}")
+    @DeleteMapping("/{id}")
     public void deletarCampanha(@RequestParam Long id){
         campanhaService.deletarCampanha(id);
     }
