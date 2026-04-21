@@ -41,4 +41,9 @@ public class OngService {
     public Optional<Ong> buscarOngId(Long id){
         return ongRepository.findById(id);
     }
+
+    public void deletarOng(Long id){
+        Ong ong = ongRepository.findById(id).orElseThrow(()-> new RuntimeException("Ong não encontrada"));
+        ongRepository.delete(ong);
+    }
 }
