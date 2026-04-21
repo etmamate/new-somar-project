@@ -32,4 +32,8 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
+    public void deletarUsuario(Long id){
+        Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        usuarioRepository.delete(usuario);
+    }
 }
