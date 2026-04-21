@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,4 +35,8 @@ public class CampanhaController {
         return campanhaService.listarCampanhas();
     }
     
+    @DeleteMapping("/campanha-{id}")
+    public void deletarCampanha(@RequestParam Long id){
+        campanhaService.deletarCampanha(id);
+    }
 }

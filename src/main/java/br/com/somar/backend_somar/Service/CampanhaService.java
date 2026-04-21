@@ -37,4 +37,9 @@ public class CampanhaService {
     public List<Campanha> listarCampanhas(){
         return campanhaRepository.findAll();
     }
+
+    public void deletarCampanha(Long id){
+        Campanha campanha = campanhaRepository.findById(id).orElseThrow(() -> new RuntimeException("Campanha não encontrada"));
+        campanhaRepository.delete(campanha);
+    }
 }
