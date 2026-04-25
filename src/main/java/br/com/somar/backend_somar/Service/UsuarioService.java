@@ -36,4 +36,13 @@ public class UsuarioService {
         Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
         usuarioRepository.delete(usuario);
     }
+
+     public void logarUsuario(String email, String senha){
+        Usuario usuario = usuarioRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        
+        if (!usuario.getSenha().equals(senha)) {
+            throw new RuntimeException("Senha incorreta");
+        }
+    }
 }
