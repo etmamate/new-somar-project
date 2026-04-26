@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.somar.backend_somar.DTO.Requests.LoginRequest;
 import br.com.somar.backend_somar.DTO.Requests.UsuarioCreateRequestDTO;
 import br.com.somar.backend_somar.Models.Usuario;
 import br.com.somar.backend_somar.Service.UsuarioService;
@@ -40,4 +41,9 @@ public class UsuarioController {
         usuarioService.deletarUsuario(id);
     }
 
+    @PostMapping("/login")
+    public String logarUsuario(@RequestBody LoginRequest loginRequest) {
+        return usuarioService.logarUsuario(loginRequest.getEmail(), loginRequest.getSenha());
+    }
+    
 }
