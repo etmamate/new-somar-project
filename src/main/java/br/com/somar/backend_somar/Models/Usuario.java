@@ -31,6 +31,6 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private UsuarioEnum tipo;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "ong", cascade = CascadeType.ALL)
     private Ong ong;
 }
