@@ -58,12 +58,12 @@ O objetivo do Somar é:
 
 ### Entidades principais:
 
-- **User**
+- **Usuário**
 - **Ong**
-- **Campaign**
-- **Donation**
-- **Service**
-- **ServiceVolunteer**
+- **Campanha**
+- **Doação**
+- **Serviços**
+- **Vuluntários**
 
 ---
 
