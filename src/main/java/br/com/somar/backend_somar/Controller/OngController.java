@@ -4,10 +4,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.somar.backend_somar.DTO.Requests.OngCreateRequestDTO;
+import br.com.somar.backend_somar.DTO.Requests.OngUpdateRequestDTO;
 import br.com.somar.backend_somar.Models.Ong;
 import br.com.somar.backend_somar.Service.OngService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -15,15 +17,14 @@ import java.util.Optional;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-
-
 
 @RestController
 @RequestMapping(value = "/ong")
 @RequiredArgsConstructor
 public class OngController {
-    
+
     private final OngService ongService;
 
     @PostMapping("/cadastrar")
@@ -35,15 +36,22 @@ public class OngController {
     public List<Ong> listarOngs() {
         return ongService.listarOngs();
     }
-    
+
     @GetMapping("/buscar-ong-{id}")
     public Optional<Ong> getMethodName(@RequestParam Long id) {
         return ongService.buscarOngId(id);
     }
 
     @DeleteMapping("/{id}")
-    public void deletarOng(@RequestParam Long id){  
+    public void deletarOng(@RequestParam Long id) {
         ongService.deletarOng(id);
     }
-    
+
+    @PutMapping("/{id}")
+    public Ong atualizarOng(
+            @PathVariable Long id,
+            @RequestBody OngUpdateRequestDTO ongUpdateRequestDTO) {
+        return ongService.atualizarOng(id, ongUpdateRequestDTO);
+    }
+
 }
