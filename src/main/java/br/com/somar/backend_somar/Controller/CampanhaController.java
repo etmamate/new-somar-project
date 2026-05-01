@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.somar.backend_somar.DTO.Requests.CampanhaCreateRequestDTO;
+import br.com.somar.backend_somar.DTO.Requests.CampanhaUpdateRequestDTO;
 import br.com.somar.backend_somar.Models.Campanha;
 import br.com.somar.backend_somar.Service.CampanhaService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,8 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -33,6 +36,11 @@ public class CampanhaController {
     @GetMapping("/listar-campanhas")
     public List<Campanha> listarCampanhas() {
         return campanhaService.listarCampanhas();
+    }
+
+    @PutMapping("/{id}")
+    public Campanha atualizarCampanha(@PathVariable Long id, @RequestBody CampanhaUpdateRequestDTO campanhaUpdateRequestDTO) {
+        return campanhaService.atualizarCampanha(id, campanhaUpdateRequestDTO);
     }
     
     @DeleteMapping("/{id}")

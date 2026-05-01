@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import br.com.somar.backend_somar.DTO.Requests.CampanhaCreateRequestDTO;
+import br.com.somar.backend_somar.DTO.Requests.CampanhaUpdateRequestDTO;
 import br.com.somar.backend_somar.Models.Campanha;
 import br.com.somar.backend_somar.Models.Ong;
 import br.com.somar.backend_somar.Repository.CampanhaRepository;
@@ -36,6 +37,17 @@ public class CampanhaService {
 
     public List<Campanha> listarCampanhas(){
         return campanhaRepository.findAll();
+    }
+
+    public Campanha atualizarCampanha(Long id, CampanhaUpdateRequestDTO campanhaUpdateRequestDTO){
+        Campanha campanha = campanhaRepository.findById(id).orElseThrow(() -> new RuntimeException("Campanha não encontrada"));
+        campanha.setTitulo(campanhaUpdateRequestDTO.getTitulo());
+        campanha.setDescricao(campanhaUpdateRequestDTO.getDescricao());
+        campanha.setMeta(campanhaUpdateRequestDTO.getMeta());
+        campanha.setValoratual(campanhaUpdateRequestDTO.getValoratual());
+        campanha.setDiafinalizado(campanhaUpdateRequestDTO.getDiafinalizado());
+        campanha.setStatus(campanhaUpdateRequestDTO.getStatus());
+        return campanhaRepository.save(campanha);
     }
 
     public void deletarCampanha(Long id){
