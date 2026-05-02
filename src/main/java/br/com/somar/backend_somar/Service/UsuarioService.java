@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import br.com.somar.backend_somar.DTO.Requests.UsuarioCreateRequestDTO;
+import br.com.somar.backend_somar.DTO.Requests.UsuarioUpdateRequestDTO;
 import br.com.somar.backend_somar.Models.Usuario;
 import br.com.somar.backend_somar.Repository.UsuarioRepository;
 
@@ -30,6 +31,15 @@ public class UsuarioService {
     // Listar Usuarios
     public List<Usuario> listarUsuarios(){
         return usuarioRepository.findAll();
+    }
+
+    public Usuario atualizarUsuario(Long id, UsuarioUpdateRequestDTO usuarioUpdateRequestDTO){
+        Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario nao encontrado"));
+        usuario.setNome(usuarioUpdateRequestDTO.getNome());
+        usuario.setEmail(usuarioUpdateRequestDTO.getEmail());
+        usuario.setSenha(usuarioUpdateRequestDTO.getSenha());
+        usuario.setTipo(usuarioUpdateRequestDTO.getTipo());
+        return usuarioRepository.save(usuario);
     }
 
     public void deletarUsuario(Long id){

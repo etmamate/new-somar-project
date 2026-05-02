@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.somar.backend_somar.DTO.Requests.LoginRequest;
 import br.com.somar.backend_somar.DTO.Requests.UsuarioCreateRequestDTO;
+import br.com.somar.backend_somar.DTO.Requests.UsuarioUpdateRequestDTO;
 import br.com.somar.backend_somar.Models.Usuario;
 import br.com.somar.backend_somar.Service.UsuarioService;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,8 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
@@ -34,6 +37,11 @@ public class UsuarioController {
     @GetMapping("/listar-usuarios")
     public List<Usuario> listarUsuarios () {
         return usuarioService.listarUsuarios();
+    }
+
+    @PutMapping("/{id}")
+    public Usuario atualizarUsuario(@PathVariable Long id, @RequestBody UsuarioUpdateRequestDTO usuarioUpdateRequestDTO){
+        return usuarioService.atualizarUsuario(id, usuarioUpdateRequestDTO);
     }
 
     @DeleteMapping("/{id}")
