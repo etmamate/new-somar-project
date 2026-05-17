@@ -1,6 +1,5 @@
 package br.com.somar.backend_somar.DTO.Responses;
 
-
 import java.time.LocalDateTime;
 
 import br.com.somar.backend_somar.Enums.CampanhaEnum;
@@ -11,8 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class CampanhaCreateResponseDTO {
-	private Long id;
+public class CampanhaListResponseDTO {
+    private Long id;
     private String titulo;
     private String descricao;
     private OngResumoResponseDTO ong;

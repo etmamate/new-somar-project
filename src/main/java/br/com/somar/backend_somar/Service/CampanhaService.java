@@ -1,57 +1,56 @@
 package br.com.somar.backend_somar.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import br.com.somar.backend_somar.DTO.Requests.CampanhaCreateRequestDTO;
 import br.com.somar.backend_somar.DTO.Requests.CampanhaUpdateRequestDTO;
+import br.com.somar.backend_somar.DTO.Responses.CampanhaCreateResponseDTO;
+import br.com.somar.backend_somar.DTO.Responses.CampanhaListResponseDTO;
+import br.com.somar.backend_somar.Mapping.CampanhaMapper;
 import br.com.somar.backend_somar.Models.Campanha;
-import br.com.somar.backend_somar.Models.Ong;
 import br.com.somar.backend_somar.Repository.CampanhaRepository;
-import br.com.somar.backend_somar.Repository.OngRepository;
 
 @Service
 public class CampanhaService {
-    private final OngRepository ongRepository;
     public final CampanhaRepository campanhaRepository;
+    private final CampanhaMapper campanhaMapper;
 
-    public CampanhaService(CampanhaRepository campanhaRepository, OngRepository ongRepository){
+    public CampanhaService(CampanhaRepository campanhaRepository, CampanhaMapper campanhaMapper){
         this.campanhaRepository = campanhaRepository;
-        this.ongRepository = ongRepository;
+        this.campanhaMapper = campanhaMapper;
     }
 
-
-    public Campanha salvarCampanha(CampanhaCreateRequestDTO campanhaCreateRequestDTO){
-        Campanha campanha = new Campanha();
-        campanha.setTitulo(campanhaCreateRequestDTO.getTitulo());
-        campanha.setDescricao(campanhaCreateRequestDTO.getDescricao());
-        // campanha.setOng(campanhaCreateRequestDTO.getCodong());
-        Ong ong = ongRepository.findById(campanhaCreateRequestDTO.getCodong()).orElseThrow(() -> new RuntimeException("Ong não encontrada"));
-        campanha.setOng(ong);
-        campanha.setMeta(campanhaCreateRequestDTO.getMeta());
+    public CampanhaCreateResponseDTO salvarCampanha(CampanhaCreateRequestDTO campanhaCreateRequestDTO){
+        Campanha campanha = campanhaMapper.toEntity(campanhaCreateRequestDTO);
         campanha.setValoratual(campanhaCreateRequestDTO.getValoratual());
-        campanha.setStatus(campanhaCreateRequestDTO.getStatus());
-        return campanhaRepository.save(campanha);
+        Campanha campanhaSalva = campanhaRepository.save(campanha);
+        return campanhaMapper.toCampanhaResponseDTO(campanhaSalva);
     }
 
-    public List<Campanha> listarCampanhas(){
-        return campanhaRepository.findAll();
+    public List<CampanhaListResponseDTO> listarCampanhas(){
+        return campanhaRepository.findAll()
+            .stream()
+            .map(campanhaMapper::toCampanhaListResponseDTO)
+            .collect(Collectors.toList());
     }
 
-    public Campanha atualizarCampanha(Long id, CampanhaUpdateRequestDTO campanhaUpdateRequestDTO){
-        Campanha campanha = campanhaRepository.findById(id).orElseThrow(() -> new RuntimeException("Campanha não encontrada"));
+    public CampanhaCreateResponseDTO atualizarCampanha(Long id, CampanhaUpdateRequestDTO campanhaUpdateRequestDTO){
+        Campanha campanha = campanhaRepository.findById(id).orElseThrow(() -> new RuntimeException("Campanha nao encontrada"));
         campanha.setTitulo(campanhaUpdateRequestDTO.getTitulo());
         campanha.setDescricao(campanhaUpdateRequestDTO.getDescricao());
         campanha.setMeta(campanhaUpdateRequestDTO.getMeta());
         campanha.setValoratual(campanhaUpdateRequestDTO.getValoratual());
         campanha.setDiafinalizado(campanhaUpdateRequestDTO.getDiafinalizado());
         campanha.setStatus(campanhaUpdateRequestDTO.getStatus());
-        return campanhaRepository.save(campanha);
+        Campanha campanhaAtualizada = campanhaRepository.save(campanha);
+        return campanhaMapper.toCampanhaResponseDTO(campanhaAtualizada);
     }
 
     public void deletarCampanha(Long id){
-        Campanha campanha = campanhaRepository.findById(id).orElseThrow(() -> new RuntimeException("Campanha não encontrada"));
+        Campanha campanha = campanhaRepository.findById(id).orElseThrow(() -> new RuntimeException("Campanha nao encontrada"));
         campanhaRepository.delete(campanha);
     }
 }
