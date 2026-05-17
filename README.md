@@ -307,7 +307,7 @@ public class Campanha {
 | `diafinalizado` | LocalDateTime | ✅ |
 | `status` | CampanhaEnum | ✅ |
 
-**Response:** Retorna o objeto `Campanha` completo.
+**Response:** Retorna um DTO de resposta da campanha, com a ONG resumida.
 
 ---
 
@@ -321,10 +321,18 @@ public class Campanha {
     "id": 1,
     "titulo": "Campanha de Natal",
     "descricao": "Arrecadação de presentes",
-    "ong": { ... },
+    "ong": {
+      "id": 1,
+      "nome": "Instituto Somar",
+      "descricao": "ONG voltada a projetos sociais e arrecadacao de doacoes.",
+      "cidade": "Sao Paulo",
+      "estado": "SP",
+      "datacriacao": "2024-11-01T10:00:00"
+    },
     "meta": 10000.00,
     "valoratual": 2500.00,
     "datacriacao": "2024-11-01T10:00:00",
+    "diafinalizado": null,
     "status": "ATIVA"
   }
 ]

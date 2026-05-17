@@ -14,7 +14,7 @@
 
   ### Observacoes importantes para o frontend
 
-  - A API retorna entidades JPA diretamente, nao os DTOs de response presentes no projeto.
+  - A API ainda retorna entidades JPA em varios endpoints, mas as campanhas agora retornam DTOs de response para evitar ciclos de serializacao.
   - Senhas sao retornadas nos endpoints de usuario. Evite exibir ou persistir esse campo no frontend.
   - O login retorna apenas uma string (`"Usuario Logado"`) e nao retorna usuario, token JWT ou permissao.
   - Nao ha configuracao de CORS no projeto. Se o frontend rodar em outra origem, como `http://localhost:5173`, pode ser necessario adicionar CORS no backend.
@@ -552,8 +552,6 @@
         "id": 1,
         "nome": "Instituto Somar",
         "descricao": "ONG voltada a projetos sociais e arrecadacao de doacoes.",
-        "documento": "12.345.678/0001-90",
-        "telefone": "11999999999",
         "cidade": "Sao Paulo",
         "estado": "SP",
         "datacriacao": "2026-05-05T20:30:00"
@@ -574,6 +572,7 @@
   - Pode alimentar home/listagem de campanhas.
   - Percentual sugerido: `valoratual / meta * 100`, protegendo contra `meta <= 0`.
   - Tratar `diafinalizado` como opcional/nulo no estado atual.
+  - O campo `ong` agora representa um resumo da ONG, nao a entidade completa.
 
   ### Atualizar campanha
 
@@ -612,7 +611,11 @@
     "id": 1,
     "ong": {
       "id": 1,
-      "nome": "Instituto Somar"
+      "nome": "Instituto Somar",
+      "descricao": "ONG voltada a projetos sociais e arrecadacao de doacoes.",
+      "cidade": "Sao Paulo",
+      "estado": "SP",
+      "datacriacao": "2026-05-05T20:30:00"
     },
     "titulo": "Campanha de Alimentos 2026",
     "descricao": "Arrecadacao atualizada para cestas basicas.",
@@ -674,9 +677,34 @@
   ### Campanha
 
   ```ts
+  type OngResumo = {
+    id: number;
+    nome: string;
+    descricao: string;
+    cidade: string;
+    estado: string;
+    datacriacao?: string;
+  };
+
   type Campanha = {
     id: number;
-    ong: Ong;
+    ong: OngResumo;
+    titulo: string;
+    descricao: string;
+    meta: number;
+    valoratual: number;
+    status: 'ATIVA' | 'FINALIZADA' | 'CANCELADA';
+    datacriacao?: string;
+    diafinalizado?: string | null;
+  };
+  ```
+
+  ### CampanhaCreateResponseDTO / CampanhaListResponseDTO
+
+  ```ts
+  type CampanhaResponse = {
+    id: number;
+    ong: OngResumo;
     titulo: string;
     descricao: string;
     meta: number;
