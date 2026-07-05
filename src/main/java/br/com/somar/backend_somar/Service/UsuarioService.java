@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.somar.backend_somar.DTO.Requests.UsuarioCreateRequestDTO;
 import br.com.somar.backend_somar.DTO.Requests.UsuarioUpdateRequestDTO;
+import br.com.somar.backend_somar.DTO.Responses.LoginResponseDTO;
 import br.com.somar.backend_somar.Models.Usuario;
 import br.com.somar.backend_somar.Repository.UsuarioRepository;
 
@@ -47,13 +48,13 @@ public class UsuarioService {
         usuarioRepository.delete(usuario);
     }
 
-     public String logarUsuario(String email, String senha){
+     public LoginResponseDTO logarUsuario(String email, String senha){
         Usuario usuario = usuarioRepository.findByEmail(email)
             .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
         
         if (!usuario.getSenha().equals(senha)) {
             throw new RuntimeException("Senha incorreta");
         }
-        return "Usuário Logado";
+        return new LoginResponseDTO(usuario.getId(), usuario.getNome(), usuario.getEmail(), usuario.getTipo());
     }
 }

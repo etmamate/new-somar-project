@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.somar.backend_somar.DTO.Requests.LoginRequest;
 import br.com.somar.backend_somar.DTO.Requests.UsuarioCreateRequestDTO;
 import br.com.somar.backend_somar.DTO.Requests.UsuarioUpdateRequestDTO;
+import br.com.somar.backend_somar.DTO.Responses.LoginResponseDTO;
 import br.com.somar.backend_somar.Models.Usuario;
 import br.com.somar.backend_somar.Service.UsuarioService;
 import lombok.RequiredArgsConstructor;
@@ -50,7 +51,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public String logarUsuario(@RequestBody LoginRequest loginRequest) {
+    public LoginResponseDTO logarUsuario(@RequestBody LoginRequest loginRequest) {
         return usuarioService.logarUsuario(loginRequest.getEmail(), loginRequest.getSenha());
     }
     

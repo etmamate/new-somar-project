@@ -27,13 +27,15 @@ public class Usuario {
     
     String nome;
     String email;
+    
+    @com.fasterxml.jackson.annotation.JsonIgnore
     String senha;
 
     @Enumerated(EnumType.STRING)
     private UsuarioEnum tipo;
 
-    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "codong")
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties("usuario")
     private Ong ong;
 }

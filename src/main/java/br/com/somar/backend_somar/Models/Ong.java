@@ -18,6 +18,8 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Getter
 @Setter
@@ -37,9 +39,11 @@ public class Ong {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "codusuario", nullable = false)
+    @JsonIgnoreProperties("ong")
     private Usuario usuario;
 
     @OneToMany(mappedBy = "ong", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("ong")
     private List<Campanha> campanhas;
     
     @CreationTimestamp
